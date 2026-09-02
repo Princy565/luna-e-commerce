@@ -72,8 +72,11 @@ def create_app():
 
     return app
 
+# WSGI entry point for production servers, including Render:
+# gunicorn app:app
+app = create_app()
+
 if __name__ == '__main__':
-    app = create_app()
     port = int(os.environ.get('PORT', 5000))
     print(f"[STARTING] LUNA Backend API server on http://127.0.0.1:{port}")
     app.run(host='0.0.0.0', port=port, debug=True)
