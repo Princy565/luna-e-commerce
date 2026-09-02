@@ -1,4 +1,7 @@
-const API_BASE = '/api';
+// In production, Render injects this at build time (for example,
+// https://your-api.onrender.com/api). Keep the relative path for local
+// development, where Vite can proxy or share the same origin.
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 
 export const getAuthToken = () => localStorage.getItem('luna_token');
 export const setAuthToken = (token) => {
